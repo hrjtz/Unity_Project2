@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // Variables
     public GameObject[] animalPrefabs;
     private float spawnRangeX = 20;
     private float spawnPosZ = 20;
@@ -13,6 +14,7 @@ public class SpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Spawns animals repeatedly over time
         InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
     }
 
@@ -23,6 +25,7 @@ public class SpawnManager : MonoBehaviour
     }
     void SpawnRandomAnimal()
     {
+        // Animal spawner class
         Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
         int animalIndex = Random.Range(0, animalPrefabs.Length);
         Instantiate(animalPrefabs[animalIndex], spawnPos, animalPrefabs[animalIndex].transform.rotation);
